@@ -182,24 +182,13 @@
             updateMessage(100);
 
 
-            /*
-            Small pause after 100%
-            so the final state is visible.
-            */
 
             setTimeout(() => {
 
                 loader.classList.add("hide");
 
-            }, 2500);
+            }, 3500);
 
-
-            /*
-            Redirect to the actual website.
-
-            For testing, comment this out
-            if you don't have home.html yet.
-            */
 
             setTimeout(() => {
 
@@ -209,11 +198,6 @@
 
         }
 
-
-        /*
-        Start after the browser has
-        loaded the basic page.
-        */
 
         window.addEventListener(
             "load",
