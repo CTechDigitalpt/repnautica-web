@@ -1,0 +1,435 @@
+        /* -----------------------------
+           Basic page styling
+        ----------------------------- */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family:
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: #f5f7fb;
+            color: #172033;
+        }
+
+
+        /* -----------------------------
+           Navigation
+        ----------------------------- */
+
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+
+            box-shadow:
+                0 2px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap: 2rem;
+
+            margin: 0;
+            padding: 1rem;
+
+            list-style: none;
+        }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+
+            padding: 0.65rem 0.9rem;
+
+            color: #374151;
+            text-decoration: none;
+
+            border-radius: 0.6rem;
+
+            transition:
+                color 180ms ease,
+                background-color 180ms ease;
+        }
+
+        .nav-link:hover,
+        .nav-link:focus-visible {
+            color: #2563eb;
+            background: #eff6ff;
+        }
+
+        .icon-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .icon-card {
+            padding: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            background: white;
+            text-align: center;
+            transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+        }
+
+        .icon-card:hover,
+        .icon-card:focus-within {
+            transform: translateY(-3px) scale(1.02);
+            border-color: #93c5fd;
+            box-shadow: 0 10px 24px rgba(37, 99, 235, 0.12);
+        }
+
+        .icon-card .nav-icon {
+            transition: transform 240ms ease;
+        }
+
+        .icon-card:hover .nav-icon,
+        .icon-card:focus-within .nav-icon {
+            transform: scale(1.12) rotate(3deg);
+            animation: icon-card-pop 320ms ease;
+        }
+         /*Propeller Spin animation*/
+        .icon-card:hover use[href$="#icon-propeller"],
+        .icon-card:focus-within use[href$="#icon-propeller"] {
+            animation: propeller-spin 800ms linear infinite;
+            transform-origin: center;
+        }
+         /*Propeller Spin animation*/
+        .icon-card:hover use[href$="#icon-compass-rose"],
+        .icon-card:focus-within use[href$="#icon-compass-rose"] {
+            animation: propeller-spin 3000ms linear infinite;
+            transform-origin: center;
+        }
+         /*Home Wheel Spin animation*/
+        .nav-link:hover use[href$="#icon-wheel"],
+        .icon-card:focus-within use[href$="#icon-wheel"] {
+            animation: propeller-spin 5000ms linear infinite;
+            transform-origin: center;
+        }
+        .icon-card-label {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: #4b5563;
+        }
+
+
+        /* -----------------------------
+           SVG sprite icons
+        ----------------------------- */
+
+        .nav-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+
+            flex: 0 0 auto;
+
+            overflow: visible;
+            transition: transform 220ms ease;
+        }
+
+        .nav-icon-use {
+            transform-origin: center;
+        }
+
+        .nav-link:hover .nav-icon,
+        .nav-link:focus-visible .nav-icon {
+            transform: translateY(-2px) scale(1.04);
+        }
+
+        .nav-link:hover .nav-icon-use,
+        .nav-link:focus-visible .nav-icon-use {
+            animation: icon-pop 300ms ease;
+        }
+
+
+        /* -----------------------------
+           Home animation
+        ----------------------------- */
+
+        .nav-link:hover .icon-home-roof,
+        .nav-link:focus-visible .icon-home-roof {
+            animation: home-roof 500ms ease;
+            transform-origin: center;
+        }
+
+        .nav-link:hover .icon-home-body,
+        .nav-link:focus-visible .icon-home-body {
+            animation: home-body 500ms ease;
+        }
+
+        .nav-link:hover .icon-home-door,
+        .nav-link:focus-visible .icon-home-door {
+            animation: home-door 500ms ease;
+        }
+
+        @keyframes icon-pop {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.08);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes icon-card-pop {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.1) rotate(4deg);
+            }
+
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes propeller-spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes home-roof {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-2px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes home-body {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(1px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes home-door {
+            0% {
+                transform: scaleY(1);
+            }
+
+            50% {
+                transform: scaleY(0.85);
+            }
+
+            100% {
+                transform: scaleY(1);
+            }
+        }
+
+
+        /* -----------------------------
+           Contact animation
+        ----------------------------- */
+
+        .nav-link:hover .icon-contact-head,
+        .nav-link:focus-visible .icon-contact-head {
+            animation: contact-head 500ms ease;
+            transform-origin: center;
+        }
+
+        .nav-link:hover .icon-contact-body,
+        .nav-link:focus-visible .icon-contact-body {
+            animation: contact-body 500ms ease;
+        }
+
+        @keyframes contact-head {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-2px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes contact-body {
+            0% {
+                transform: scaleX(1);
+            }
+
+            50% {
+                transform: scaleX(0.9);
+            }
+
+            100% {
+                transform: scaleX(1);
+            }
+        }
+
+
+        /* -----------------------------
+           Footer arrow animation
+        ----------------------------- */
+
+        .nav-link:hover .icon-footer-arrow,
+        .nav-link:focus-visible .icon-footer-arrow {
+            animation: arrow-move 450ms ease;
+        }
+
+        .nav-link:hover .icon-footer-line,
+        .nav-link:focus-visible .icon-footer-line {
+            animation: line-grow 450ms ease;
+        }
+
+        @keyframes arrow-move {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(3px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes line-grow {
+            0% {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+
+            50% {
+                transform: scaleX(0.8);
+                transform-origin: left;
+            }
+
+            100% {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+        }
+
+
+        /* -----------------------------
+           Page content
+        ----------------------------- */
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 5rem 1.5rem;
+        }
+
+        section {
+            min-height: 70vh;
+            padding: 4rem 0;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        p {
+            line-height: 1.7;
+            color: #4b5563;
+        }
+
+
+
+        /* -----------------------------
+           Reduced motion accessibility
+        ----------------------------- */
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+
+        /* -----------------------------
+           Mobile navigation
+        ----------------------------- */
+
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-list {
+                gap: 0.25rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-link {
+                flex-direction: column;
+                gap: 0.25rem;
+
+                font-size: 0.8rem;
+            }
+
+            .nav-icon {
+                width: 1.75rem;
+                height: 1.75rem;
+            }
+        }
+
