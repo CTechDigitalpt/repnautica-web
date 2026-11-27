@@ -1,0 +1,8 @@
+[
+  {"lotId":"RPN-01","slots":[{"id":"RPN-01-6x3","label":"6 x 3 pés","size":"6 x 3 pés","price":"A partir de 90 € / mês","status":"available"},{"id":"RPN-01-30x12","label":"30 x 12 pés","size":"30 x 12 pés","price":"A partir de 180 € / mês","status":"taken"}]},
+  {"lotId":"RPN-MAIN","slots":[{"id":"RPN-LOTE1-30x12","label":"30 x 12 pés","size":"30 x 12 pés","price":"A partir de 420 € / mês","status":"taken"},{"id":"RPN-LOTE2-6x3","label":"6 x 3 pés","size":"6 x 3 pés","price":"A partir de 95 € / mês","status":"available"}]},
+  {"lotId":"TRAVEL-LIFT-300","slots":[{"id":"TRAVEL-LIFT-300-30x12","label":"30 x 12 pés","size":"30 x 12 pés","price":"A partir de 450 € / Levantamento ou Lançamento","status":"available"}]},
+  {"lotId":"TRAVEL-LIFT-50","slots":[{"id":"TRAVEL-LIFT-50-30x12","label":"30 x 12 pés","size":"30 x 12 pés","price":"A partir de 350 € / Levantamento ou Lançamento","status":"available"},{"id":"TRAVEL-LIFT-50-6x3","label":"6 x 3 pés","size":"6 x 3 pés","price":"A partir de 250 € / Levantamento ou Lançamento","status":"available"}]},
+  {"lotId":"RPN-053","slots":[{"id":"RPN-053-6x3","label":"6 x 3 pés","size":"6 x 3 pés","price":"A partir de 80 € / mês","status":"available"}]},
+  {"lotId":"RPN-064","slots":[{"id":"RPN-064-30x12","label":"30 x 12 pés","size":"30 x 12 pés","price":"A partir de 320 € / mês","status":"taken"},{"id":"RPN-064-6x3","label":"6 x 3 pés","size":"6 x 3 pés","price":"A partir de 75 € / mês","status":"future","availableFrom":"2026-09-15","availabilityNote":"Previsão após o atual locatário retirar um reboque e um JetSki."}]}
+]

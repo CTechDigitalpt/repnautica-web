@@ -1,0 +1,104 @@
+[
+  {
+    "lotId": "RPN-01",
+    "slots": [
+      {
+        "id": "RPN-01-6x3",
+        "label": "6 x 3 ft",
+        "size": "6 x 3 ft",
+        "price": "From €90 / month",
+        "status": "available"
+      },
+      {
+        "id": "RPN-01-30x12",
+        "label": "30 x 12 ft",
+        "size": "30 x 12 ft",
+        "price": "From €180 / month",
+        "status": "taken"
+      }
+    ]
+  },
+  {
+    "lotId": "RPN-MAIN",
+    "slots": [
+      {
+        "id": "RPN-LOTE1-30x12",
+        "label": "30 x 12 ft",
+        "size": "30 x 12 ft",
+        "price": "From €420 / month",
+        "status": "taken"
+      },
+      {
+        "id": "RPN-LOTE2-6x3",
+        "label": "6 x 3 ft",
+        "size": "6 x 3 ft",
+        "price": "From €95 / month",
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "lotId": "TRAVEL-LIFT-300",
+    "slots": [
+      {
+        "id": "TRAVEL-LIFT-300-30x12",
+        "label": "30 x 12 ft",
+        "size": "30 x 12 ft",
+        "price": "FROM €450 / Lift or Launch",
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "lotId": "TRAVEL-LIFT-50",
+    "slots": [
+      {
+        "id": "TRAVEL-LIFT-50-30x12",
+        "label": "30 x 12 ft",
+        "size": "30 x 12 ft",
+        "price": "FROM €350 / Lift or Launch",
+        "status": "available"
+      },
+      {
+        "id": "TRAVEL-LIFT-50-6x3",
+        "label": "6 x 3 ft",
+        "size": "6 x 3 ft",
+        "price": "FROM €250 / Lift or Launch",
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "lotId": "RPN-053",
+    "slots": [
+      {
+        "id": "RPN-053-6x3",
+        "label": "6 x 3 ft",
+        "size": "6 x 3 ft",
+        "price": "From €80 / month",
+        "status": "available"
+      }
+    ]
+  },
+  {
+    "lotId": "RPN-064",
+    "slots": [
+      {
+        "id": "RPN-064-30x12",
+        "label": "30 x 12 ft",
+        "size": "30 x 12 ft",
+        "price": "From €320 / month",
+        "status": "taken"
+      },
+      {
+        "id": "RPN-064-6x3",
+        "label": "6 x 3 ft",
+        "size": "6 x 3 ft",
+        "price": "From €75 / month",
+        "status": "future",
+        "availableFrom": "2026-09-15",
+        "availabilityNote": "Expected after the current tenant removes a trailer and jetski."
+      }
+    ]
+  }
+]
