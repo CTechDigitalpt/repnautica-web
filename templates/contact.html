@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RepNaútica | Booking Request</title>
+    <link rel="stylesheet" href="../assets/css/map-styles.css">
+    <link rel="stylesheet" href="../assets/css/contact-us-style.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="hero-section">
+            <div class="hero-copy">
+                <p class="eyebrow">RepNaútica · Portimão | Parchal Shipyard</p>
+                <h1>Book a travel lift or launch date</h1>
+                <p class="hero-text">Request availability for haul-out, launch, or lift-and-return services with preferred timing and vessel dimensions.</p>
+                <div class="hero-points">
+                    <span>Travel lift availability</span>
+                    <span>Launch / haul-out / return</span>
+                    <span>Flexible booking windows</span>
+                </div>
+                <a class="hero-button" href="#bookingPanel">Request availability</a>
+            </div>
+        </header>
+
+        <section class="booking-panel" id="bookingPanel">
+            <div class="booking-toolbar">
+                <div>
+                    <p class="section-label">Booking request</p>
+                    <h2>Availability request form</h2>
+                </div>
+                <div class="availability-pill" id="bookingStatus">Awaiting review</div>
+            </div>
+
+            <div class="booking-layout">
+                <aside class="summary-card" aria-labelledby="requestOverviewTitle">
+                    <h3 id="requestOverviewTitle">Request overview</h3>
+                    <div class="summary-list">
+                        <p><strong>Vessel:</strong> <span id="summaryVessel">[name]</span></p>
+                        <p><strong>LOA:</strong> <span id="summaryLoa">[length]</span></p>
+                        <p><strong>Beam:</strong> <span id="summaryBeam">[beam]</span></p>
+                        <p><strong>Weight:</strong> <span id="summaryWeight">[approx. tonnes]</span></p>
+                        <p><strong>Service:</strong> <span id="summaryService">Launch / haul-out / lift and return</span></p>
+                        <p><strong>Preferred date:</strong> <span id="summaryDate">[date]</span></p>
+                        <p><strong>Preferred time:</strong> <span id="summaryTime">[time/window]</span></p>
+                        <p id="summaryDurationRow" hidden><strong>Lot duration:</strong> <span id="summaryDuration">[duration]</span></p>
+                    </div>
+                    <p class="summary-note">Your request will be checked against the yard calendar and confirmed by our team.</p>
+                </aside>
+
+                <form class="booking-form" id="bookingForm">
+                    <div class="form-grid two-columns">
+                        <label class="field">
+                            <span>Vessel name <span class="required-mark">*</span></span>
+                            <input id="vesselName" name="vesselName" type="text" placeholder="e.g. Sea Breeze" required>
+                        </label>
+                        <label class="field">
+                            <span>Contact name <span class="required-mark">*</span></span>
+                            <input id="contactName" name="contactName" type="text" placeholder="Your name" required>
+                        </label>
+                    </div>
+
+                    <div class="compliance-card">
+                        <h4>Vessel information</h4>
+                        <div class="form-grid two-columns">
+                            <label class="field compact">
+                                <span>Registration number / port</span>
+                                <input id="registrationNumber" name="registrationNumber" type="text" placeholder="e.g. PORT 1234">
+                            </label>
+                            <label class="field compact">
+                                <span>Flag / nationality</span>
+                                <input id="flag" name="flag" type="text" placeholder="e.g. Portuguese">
+                            </label>
+                        </div>
+                        <div class="form-grid two-columns">
+                            <label class="field compact">
+                                <span>Owner name</span>
+                                <input id="ownerName" name="ownerName" type="text" placeholder="Owner name">
+                            </label>
+                            <label class="field compact">
+                                <span>Owner representative</span>
+                                <input id="representative" name="representative" type="text" placeholder="If applicable">
+                            </label>
+                        </div>
+                        <div class="form-grid two-columns">
+                            <label class="field compact">
+                                <span>Type of vessel</span>
+                                <input id="vesselType" name="vesselType" type="text" placeholder="Sailing yacht, motor yacht, catamaran, etc.">
+                            </label>
+                            <label class="field compact">
+                                <span>Owner representative</span>
+                                <input id="representativeAlt" name="representativeAlt" type="text" placeholder="If applicable">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="unit-toggle" role="radiogroup" aria-label="Boat dimension unit">
+                        <span>Dimension unit</span>
+                        <div class="toggle-options">
+                            <button class="unit-option active" type="button" data-unit="ft">Feet</button>
+                            <button class="unit-option" type="button" data-unit="m">Meters</button>
+                        </div>
+                    </div>
+
+                    <div class="form-grid three-columns">
+                        <label class="field">
+                            <span id="loaLabel">LOA (ft) <span class="required-mark" aria-hidden="true">*</span></span>
+                            <input id="loa" name="loa" type="number" step="0.1" min="1" placeholder="Length overall" required>
+                        </label>
+                        <label class="field">
+                            <span id="beamLabel">Beam (ft) <span class="required-mark" aria-hidden="true">*</span></span>
+                            <input id="beam" name="beam" type="number" step="0.1" min="1" placeholder="Beam" required>
+                        </label>
+                        <label class="field">
+                            <span>Draft <span class="required-mark" aria-hidden="true">*</span></span>
+                            <input id="draft" name="draft" type="number" step="0.1" min="0.1" placeholder="Approx. draft" required>
+                        </label>
+                    </div>
+
+                    <div class="form-grid two-columns">
+                        <label class="field">
+                            <span>Approx. weight <span class="required-mark">*</span></span>
+                            <input id="weight" name="weight" type="number" step="0.1" min="0" placeholder="tonnes" required>
+                        </label>
+                        <label class="field">
+                            <span>Service <span class="required-mark">*</span></span>
+                            <select id="service" name="service">
+                                <option value="Launch">Launch</option>
+                                <option value="Haul-out">Haul-out</option>
+                                <option value="Lift and return">Lift and return</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="form-grid two-columns">
+                        <label class="field">
+                            <span>Preferred date <span class="required-mark">*</span></span>
+                            <input id="preferredDate" name="preferredDate" type="date" required>
+                        </label>
+                        <label class="field">
+                            <span>Preferred time</span>
+                            <input id="preferredTime" name="preferredTime" type="text" placeholder="Morning, afternoon, or flexible">
+                        </label>
+                    </div>
+
+                    <div class="compliance-card operational-card">
+                        <h4>Operational requirements</h4>
+                        <div class="form-grid two-columns">
+                            <label class="field compact">
+                                <span>Alternative dates</span>
+                                <input id="alternativeDates" name="alternativeDates" type="text" placeholder="Optional backup dates">
+                            </label>
+                            <label class="field compact">
+                                <span>Hardstanding required</span>
+                                <select id="hardstanding" name="hardstanding">
+                                    <option value="">Select</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                    <option value="TBC">To be confirmed</option>
+                                </select>
+                            </label>
+                        </div>
+                        <label class="field compact">
+                            <span>Special lifting requirements</span>
+                            <textarea id="specialRequirements" name="specialRequirements" rows="3" placeholder="Unusual hull shape, lifting points, keel, twin hulls, etc."></textarea>
+                        </label>
+                    </div>
+
+                    <div class="field" id="parkingDurationField" hidden>
+                        <span>Expected lot duration</span>
+                        <select id="parkingDuration" name="parkingDuration">
+                            <option value="">Select duration</option>
+                            <option value="1 day">1 day</option>
+                            <option value="2 days">2 days</option>
+                            <option value="3 days">3 days</option>
+                            <option value="1 week">1 week</option>
+                            <option value="2 weeks">2 weeks</option>
+                            <option value="1 month">1 month</option>
+                            <option value="2 months">2 months</option>
+                            <option value="3 months">3 months</option>
+                            <option value="6 months">6 months</option>
+                            <option value="1 year">1 year</option>
+                            <option value="Longer term">Longer term</option>
+                        </select>
+                    </div>
+
+                    <div class="form-grid two-columns">
+                        <label class="field">
+                            <span>Email <span class="required-mark">*</span></span>
+                            <input id="email" name="email" type="email" placeholder="you@email.com" required>
+                        </label>
+                        <label class="field">
+                            <span>Phone</span>
+                            <input id="phone" name="phone" type="tel" placeholder="+351 000 000 000">
+                        </label>
+                    </div>
+
+                    <label class="field">
+                        <span>Notes</span>
+                        <textarea id="notes" name="notes" rows="4" placeholder="Tell us about your vessel, arrival plan, or any specific requirements."></textarea>
+                    </label>
+
+                    <div class="compliance-panel" aria-labelledby="complianceTitle">
+                        <div class="compliance-header">
+                            <p class="section-label">Documents / compliance</p>
+                            <h3 id="complianceTitle">Comprehensive travel lift enquiry checklist</h3>
+                            <p>For planning purposes, please note that the following documents and information may be required before a vessel lifting or launching operation can proceed, in accordance with applicable Portuguese maritime requirements.</p>
+
+                        </div>
+
+                        <div class="compliance-grid">
+                            <div class="compliance-card">
+                                <h4>Documents and compliance</h4>
+                                <div class="form-grid two-columns">
+                                    <label class="field compact">
+                                        <span>Vessel registration / document</span>
+                                        <select id="registrationDoc" name="registrationDoc">
+                                            <option value="">Select</option>
+                                            <option value="Ready">Ready</option>
+                                            <option value="Pending">Pending</option>
+                                            <option value="Not applicable">Not applicable</option>
+                                        </select>
+                                    </label>
+                                    <label class="field compact">
+                                        <span>Proof of insurance</span>
+                                        <select id="insuranceDoc" name="insuranceDoc">
+                                            <option value="">Select</option>
+                                            <option value="Ready">Ready</option>
+                                            <option value="Pending">Pending</option>
+                                            <option value="Not applicable">Not applicable</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="form-grid two-columns">
+                                    <label class="field compact">
+                                        <span>Owner ID / passport</span>
+                                        <select id="ownerIdDoc" name="ownerIdDoc">
+                                            <option value="">Select</option>
+                                            <option value="Ready">Ready</option>
+                                            <option value="Pending">Pending</option>
+                                            <option value="Not applicable">Not applicable</option>
+                                        </select>
+                                    </label>
+                                    <label class="field compact">
+                                        <span>Authorization / POA</span>
+                                        <select id="authorizationDoc" name="authorizationDoc">
+                                            <option value="">Select</option>
+                                            <option value="Ready">Ready</option>
+                                            <option value="Pending">Pending</option>
+                                            <option value="Not applicable">Not applicable</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="advisory-box">
+                        <h4>Important lift preparation note</h4>
+                        <p>The owner/client should identify the locations of probes, transducers, and other hull-mounted equipment, remove protruding sensors where necessary, mark lifting-belt positions, and note any weak points where support ropes must not be attached.</p>
+                        <p>The owner is also responsible for manoeuvring the vessel into the travel lift area when required.</p>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="primary-action" type="submit">Request availability</button>
+                        <p class="form-message" id="formMessage" role="status">Please share your preferred date and vessel details so we can review availability.</p>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <div class="modal" id="successModal" aria-hidden="true">
+        <div class="modal-backdrop" data-close-modal="true"></div>
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="successModalTitle">
+            <button class="close-modal" type="button" data-close-modal="true" aria-label="Close">×</button>
+            <h3 id="successModalTitle">Request sent successfully</h3>
+            <p>Lift Service availability request has been sent and our team will review it shortly.</p>
+            <p>You will be contacted as soon as possible.</p>
+            <button class="primary-action" type="button" data-close-modal="true">Close</button>
+        </div>
+    </div>
+
+    <script src="../assets/js/contact-us.js"></script>
+</body>
+</html>

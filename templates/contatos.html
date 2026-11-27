@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RepNaútica | Pedido de Reserva</title>
+    <link rel="stylesheet" href="../assets/css/map-styles.css">
+    <link rel="stylesheet" href="../assets/css/contact-us-style.css">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="hero-section">
+            <div class="hero-copy">
+                <p class="eyebrow">RepNaútica · Portimão | Parchal Shipyard</p>
+                <h1>Reserve um elevador de viagem ou data de lançamento</h1>
+                <p class="hero-text">Solicitar disponibilidade para serviços de transporte, lançamento ou elevador e retorno com dimensões de tempo e embarcações preferidas.</p>
+                <div class="hero-points">
+                    <span>Disponibilidade de elevador de viagem</span>
+                    <span>Lançamento / transporte / retorno</span>
+                    <span>Janelas de reserva flexíveis</span>
+                </div>
+                <a class="hero-button" href="#bookingPanel">Solicitar disponibilidade</a>
+            </div>
+        </header>
+
+        <section class="booking-panel" id="bookingPanel">
+            <div class="booking-toolbar">
+                <div>
+                    <p class="section-label">Solicitação de reserva</p>
+                    <h2>Formulário de solicitação de disponibilidade</h2>
+                </div>
+                <div class="availability-pill" id="bookingStatus">À espera de revisão</div>
+            </div>
+
+            <div class="booking-layout">
+                <aside class="summary-card" aria-labelledby="requestOverviewTitle">
+                    <h3 id="requestOverviewTitle">Visão geral do pedido</h3>
+                    <div class="summary-list">
+                        <p><strong>Embarcação:</strong> <span id="summaryVessel">[nome]</span></p>
+                        <p><strong>LOA:</strong> <span id="summaryLoa">[comprimento]</span></p>
+                        <p><strong>Viga:</strong> <span id="summaryBeam">[comprimento]</span></p>
+                        <p><strong>Peso:</strong> <span id="summaryWeight">[aprox. toneladas] t</span></p>
+                        <p><strong>Serviço:</strong> <span id="summaryService">Lançamento</span></p>
+                        <p><strong>Data de preferência:</strong> <span id="summaryDate">[data]</span></p>
+                        <p><strong>Tempo preferido:</strong> <span id="summaryTime">[tempo/janela]</span></p>
+                        <p id="summaryDurationRow" hidden=""><strong>Lot duration:</strong> <span id="summaryDuration">[duration]</span></p>
+                    </div>
+                    <p class="summary-note">Seu pedido será verificado em relação ao calendário do pátio e confirmado por nossa equipe.</p>
+                </aside>
+
+                <form class="booking-form" id="bookingForm">
+                    <div class="form-grid two-columns">
+                        <label class="field">
+                            <span>Nome do navio <span class="required-mark">*</span></span>
+                            <input id="vesselName" name="vesselName" type="text" placeholder="e.g. Brisa do mar" required="">
+                        </label>
+                        <label class="field">
+                            <span>Nome do contato <span class="required-mark">*</span></span>
+                            <input id="contactName" name="contactName" type="text" placeholder="O seu nome" required="">
+                        </label>
+                    </div>
+
+                    <div class="compliance-card">
+                        <h4>Informações do navio</h4>
+                        <div class="form-grid two-columns">
+                            <label class="field compact">
+                                <span>Número de registo / porto</span>
+                                <input id="registrationNumber" name="registrationNumber" type="text" placeholder="e.g. PORTO 1234">
+                            </label>
+                            <label class="field compact">
+                                <span>Bandeira / nacionalidade</span>
+                                <input id="flag" name="flag" type="text" placeholder="e.g. Português">
+                            </label>
+                        </div>
+                        <div class="form-grid two-columns">
+                            <label class="field compact">
+                                <span>Nome do proprietário</span>
+                                <input id="ownerName" name="ownerName" type="text" placeholder="Nome do proprietário">
+                            </label>
+                            <label class="field compact">
+                                <span>Representante proprietário</span>
+                                <input id="representative" name="representative" type="text" placeholder="Se for o caso">
+                            </label>
+                        </div>
+                        <div class="form-grid two-columns">
+                            <label class="field compact">
+                                <span>Tipo de embarcação</span>
+                                <input id="vesselType" name="vesselType" type="text" placeholder="Iate à vela, iate a motor, catamarã, etc.">
+                            </label>
+                            <label class="field compact">
+                                <span>Representante proprietário</span>
+                                <input id="representativeAlt" name="representativeAlt" type="text" placeholder="Se for o caso">
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="unit-toggle" role="radiogroup" aria-label="Unidade de dimensão do barco">
+                        <span>Unidade de dimensão</span>
+                        <div class="toggle-options">
+                            <button class="unit-option active" type="button" data-unit="ft">Pés</button>
+                            <button class="unit-option" type="button" data-unit="m">Metros</button>
+                        </div>
+                    </div>
+
+                    <div class="form-grid three-columns">
+                        <label class="field">
+                            <span id="loaLabel">LOA (ft) <span class="required-mark" aria-hidden="true">*</span></span>
+                            <input id="loa" name="loa" type="number" step="0.1" min="1" placeholder="Comprimento em geral" required="">
+                        </label>
+                        <label class="field">
+                            <span id="beamLabel">Viga (ft) <span class="required-mark" aria-hidden="true">*</span></span>
+                            <input id="beam" name="beam" type="number" step="0.1" min="1" placeholder="feixe" required="">
+                        </label>
+                        <label class="field">
+                            <span>Projeto <span class="required-mark" aria-hidden="true">*</span></span>
+                            <input id="draft" name="draft" type="number" step="0.1" min="0.1" placeholder="Aprox. rascunho" required="">
+                        </label>
+                    </div>
+
+                    <div class="form-grid two-columns">
+                        <label class="field">
+                            <span>Aprox. peso <span class="required-mark">*</span></span>
+                            <input id="weight" name="weight" type="number" step="0.1" min="0" placeholder="toneladas" required="">
+                        </label>
+                        <label class="field">
+                            <span>Serviço <span class="required-mark">*</span></span>
+                            <select id="service" name="service">
+                                <option value="Launch">Lançamento</option>
+                                <option value="Haul-out">Transporte-saído</option>
+                                <option value="Lift and return">Elevador e retorno</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="form-grid two-columns">
+                        <label class="field">
+                            <span>Data de preferência <span class="required-mark">*</span></span>
+                            <input id="preferredDate" name="preferredDate" type="date" required="">
+                        </label>
+                        <label class="field">
+                            <span>Tempo preferido</span>
+                            <input id="preferredTime" name="preferredTime" type="text" placeholder="Manhã, tarde ou flexível">
+                        </label>
+                    </div>
+
+                    <div class="compliance-card operational-card">
+                        <h4>Requisitos operacionais</h4>
+                        <div class="form-grid two-columns">
+                            <label class="field compact">
+                                <span>Datas alternativas</span>
+                                <input id="alternativeDates" name="alternativeDates" type="text" placeholder="Datas de backup opcionais">
+                            </label>
+                            <label class="field compact">
+                                <span>Perspicácia necessária</span>
+                                <select id="hardstanding" name="hardstanding">
+                                    <option value="">Selecione</option>
+                                    <option value="Yes">Sim</option>
+                                    <option value="No">Não</option>
+                                    <option value="TBC">A confirmar</option>
+                                </select>
+                            </label>
+                        </div>
+                        <label class="field compact">
+                            <span>Requisitos especiais de elevação</span>
+                            <textarea id="specialRequirements" name="specialRequirements" rows="3" placeholder="Forma de casco incomum, pontos de elevação, quilha, cascos gêmeos, etc."></textarea>
+                        </label>
+                    </div>
+
+                    <div class="field" id="parkingDurationField" hidden="">
+                        <span>Expected lot duration</span>
+                        <select id="parkingDuration" name="parkingDuration">
+                            <option value="">Select duration</option>
+                            <option value="1 day">1 day</option>
+                            <option value="2 days">2 days</option>
+                            <option value="3 days">3 days</option>
+                            <option value="1 week">1 week</option>
+                            <option value="2 weeks">2 weeks</option>
+                            <option value="1 month">1 month</option>
+                            <option value="2 months">2 months</option>
+                            <option value="3 months">3 months</option>
+                            <option value="6 months">6 months</option>
+                            <option value="1 year">1 year</option>
+                            <option value="Longer term">Longer term</option>
+                        </select>
+                    </div>
+
+                    <div class="form-grid two-columns">
+                        <label class="field">
+                            <span>E-mail <span class="required-mark">*</span></span>
+                            <input id="email" name="email" type="email" placeholder="you@email.com Em inglês" required="">
+                        </label>
+                        <label class="field">
+                            <span>Telefone</span>
+                            <input id="phone" name="phone" type="tel" placeholder="+351 000 000 000">
+                        </label>
+                    </div>
+
+                    <label class="field">
+                        <span>Notas</span>
+                        <textarea id="notes" name="notes" rows="4" placeholder="Conte-nos sobre sua embarcação, plano de chegada ou quaisquer requisitos específicos."></textarea>
+                    </label>
+
+                    <div class="compliance-panel" aria-labelledby="complianceTitle">
+                        <div class="compliance-header">
+                            <p class="section-label">Documentos / conformidade</p>
+                            <h3 id="complianceTitle">Lista de verificação abrangente do inquérito de elevador de viagem</h3>
+                            <p>Para fins de planeamento, note que os seguintes documentos e informações podem ser necessários antes de uma operação de levantamento ou lançamento de uma embarcação, de acordo com os requisitos marítimos portugueses aplicáveis.</p>
+
+                        </div>
+
+                        <div class="compliance-grid">
+                            <div class="compliance-card">
+                                <h4>Documentos e conformidade</h4>
+                                <div class="form-grid two-columns">
+                                    <label class="field compact">
+                                        <span>Registro de embarcações / documento</span>
+                                        <select id="registrationDoc" name="registrationDoc">
+                                            <option value="">Selecione</option>
+                                            <option value="Ready">Pronto</option>
+                                            <option value="Pending">Pendente</option>
+                                            <option value="Not applicable">Não aplicável</option>
+                                        </select>
+                                    </label>
+                                    <label class="field compact">
+                                        <span>Comprovante de seguro</span>
+                                        <select id="insuranceDoc" name="insuranceDoc">
+                                            <option value="">Selecione</option>
+                                            <option value="Ready">Pronto</option>
+                                            <option value="Pending">Pendente</option>
+                                            <option value="Not applicable">Não aplicável</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="form-grid two-columns">
+                                    <label class="field compact">
+                                        <span>Identificação do proprietário / passaporte</span>
+                                        <select id="ownerIdDoc" name="ownerIdDoc">
+                                            <option value="">Selecione</option>
+                                            <option value="Ready">Pronto</option>
+                                            <option value="Pending">Pendente</option>
+                                            <option value="Not applicable">Não aplicável</option>
+                                        </select>
+                                    </label>
+                                    <label class="field compact">
+                                        <span>Autorização / POA</span>
+                                        <select id="authorizationDoc" name="authorizationDoc">
+                                            <option value="">Selecione</option>
+                                            <option value="Ready">Pronto</option>
+                                            <option value="Pending">Pendente</option>
+                                            <option value="Not applicable">Não aplicável</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="advisory-box">
+                        <h4>Nota de preparação de elevador importante</h4>
+                        <p>O proprietário/cliente deve identificar os locais de sondas, transdutores e outros equipamentos montados no casco, remover sensores salientes quando necessário, marcar posições do cinto de elevação e observar quaisquer pontos fracos onde as cordas de suporte não devem ser anexadas.</p>
+                        <p>O proprietário também é responsável por manobrar a embarcação na área de transporte quando necessário.</p>
+                    </div>
+
+                    <div class="form-actions">
+                        <button class="primary-action" type="submit">Solicitar disponibilidade</button>
+                        <p class="form-message" id="formMessage" role="status">Por favor, compartilhe sua data preferida e detalhes da embarcação para que possamos revisar a disponibilidade.</p>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <div class="modal" id="successModal" aria-hidden="true">
+        <div class="modal-backdrop" data-close-modal="true"></div>
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="successModalTitle">
+            <button class="close-modal" type="button" data-close-modal="true" aria-label="Close">×</button>
+            <h3 id="successModalTitle">Request sent successfully</h3>
+            <p>Lift Service availability request has been sent and our team will review it shortly.</p>
+            <p>You will be contacted as soon as possible.</p>
+            <button class="primary-action" type="button" data-close-modal="true">Close</button>
+        </div>
+    </div>
+
+    <script src="../assets/js/contact-us.js"></script>
+
+
+</body></html>
