@@ -187,14 +187,14 @@
 
                 loader.classList.add("hide");
 
-            }, 3500);
+            }, 3000);
 
 
             setTimeout(() => {
 
                 window.location.assign(destination);
 
-            }, 1500);
+            }, 2000);
 
         }
 
